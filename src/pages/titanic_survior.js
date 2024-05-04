@@ -1,6 +1,9 @@
 import React from "react";
+import * as d3 from 'd3';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
+import { BarChartEducation } from "@/components/week10/barChartEducation";
+import { BarChartRace } from "@/components/week10/barChartRace";
 import { ScatterPlot } from "@/components/week10/scatter_plot";
 import { TreeMap } from "@/components/week10/tree_map";
 import { Dropdown } from "@/components/week10/dropdown";
@@ -21,6 +24,8 @@ const Titanic = () => {
     const WIDTH = 1000;
     const HEIGHT = 600;
     const margin = { top: 20, right: 40, bottom: 20, left: 40 };
+    const innerHeightBar = HEIGHT - margin.top - margin.bottom-120;
+    const innerWidthBar = WIDTH - margin.left - margin.right;
     
     const rawData = useData(csvUrl);
     if (!rawData) {
@@ -37,6 +42,23 @@ const Titanic = () => {
     const attributes = [ firstAttr, secondAttr, thirdAttr].filter( d => d !== "null"); 
     // if length/attribute = 0, set a default value
     // console.log(attributes);
+
+    const xScaleBarEducation = d3.scaleBand()
+        .domain(data.map(d => d.EducationLevel))
+        .range([0, innerWidthBar])
+        .padding(0.1);
+
+    const xScaleBarRace = d3.scaleBand()
+    .domain(data.map(d => d.Race))
+    .range([0, innerWidthBar])
+    .padding(0.1);
+
+
+    const yScaleBar = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.Salary)])
+        .range([innerHeightBar, 0])
+        .nice();
+
     const onFristAttrChange = ( attr ) => {
         setFirstAttr(attr);
     }
@@ -105,6 +127,21 @@ const Titanic = () => {
         </Row>
         <Row className="justify-content-md-left mb-5">
             <TreeMap width={WIDTH} height={HEIGHT} tree={tree} selectedCell={selectedCell} setSelectedCell={setSelectedCell}/>
+        </Row>
+
+        <Row>
+            <h2> Barcharts under construction</h2>
+            {/* x: Education Level and y: Salary */}
+            <svg width={WIDTH} height={HEIGHT}>
+                <BarChartEducation offsetX={margin.left+10} offsetY={margin.top} data={data} xScale={xScaleBarEducation} 
+                yScale={yScaleBar} height={HEIGHT - margin.top - margin.bottom-120} width={WIDTH - margin.left - margin.right}/>
+            </svg>
+
+            <svg width={WIDTH} height={HEIGHT}>
+                <BarChartRace offsetX={margin.left+10} offsetY={margin.top} data={data} xScale={xScaleBarRace} 
+                yScale={yScaleBar} height={HEIGHT - margin.top - margin.bottom-120} width={WIDTH - margin.left - margin.right}/>
+            </svg>
+
         </Row>
     </Container>)
 }
