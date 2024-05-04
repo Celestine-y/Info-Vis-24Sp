@@ -1,11 +1,21 @@
 import * as d3 from 'd3'
 
+// // Function to calculate regression line
+// function calculateRegressionLine(data) {
+//     // Use D3's regression module to calculate regression
+//     const regression = d3.regressionLinear()
+//         .x(d => d.Age)
+//         .y(d => d.Salary)
+//         .domain([20, d3.max(data, d => d.Age)]); // Adjust domain as needed
+
+//     return regression(data);
+// }
 
 export function ScatterPlot(props) {
     const { width, height, data, selectedCell, setSelectedCell, attributes } = props;
     const margin = { top: 20, right: 40, bottom: 20, left: 40, gap: 40 };
     const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
+    const innerHeight = (height - margin.top - margin.bottom)*2;
     const xScale = d3.scaleLinear().range([0, innerWidth-200])
         .domain([20, d3.max(data, d => d.Age)]).nice();
     const yScale = d3.scaleLinear().range([(innerHeight-margin.gap)/2, 0])
@@ -45,6 +55,20 @@ export function ScatterPlot(props) {
         setSelectedCell(items);
     }
     //console.log(colormap[0]) 
+    
+    // // Inside your ScatterPlot component
+    // const regressionLineData = calculateRegressionLine(data);
+
+    // // Use D3's line generator
+    // const lineGenerator = d3.line()
+    //     .x(d => xScale(d[0]))
+    //     .y(d => yScale(d[1]));
+
+    // // Render the regression line
+    // <g>
+    //     <path d={lineGenerator(regressionLineData)} stroke="red" strokeWidth="2" fill="none" />
+    // </g>
+
     return <svg width={width} height={height}>
     <g transform={`translate(${margin.left+30}, ${margin.top})`}>
         <line y1={innerHeight/2-margin.gap/2} x2={innerWidth-180} y2={innerHeight/2-margin.gap/2} stroke={"black"} strokeWidth={2}/> 
@@ -60,7 +84,7 @@ export function ScatterPlot(props) {
             </g>
         })}
 
-        <text x={innerWidth} y={innerHeight/2+10}>{"Age"}</text>
+        <text x={innerWidth/1.25} y={innerHeight/2+10}>{"Age"}</text>
         <text x={0} y={-5}>{"Salary"}</text>
         {/* <text x={0} y={innerHeight+5}>{"Age"}</text> */}
         <text style={{fontSize:'2em'}}x={innerWidth-150} y={50}>{"Age-Salary Scatterplot"}</text>
