@@ -10,8 +10,8 @@ export function ScatterPlot(props) {
         .domain([20, d3.max(data, d => d.Age)]).nice();
     const yScale = d3.scaleLinear().range([(innerHeight-margin.gap)/2, 0])
         .domain([0, d3.max(data, d => d.Salary)]).nice();
-    const xScaleNew = d3.scaleLinear().range([0, innerWidth-200])
-        .domain([0, d3.max(data, d => d.YearsOfExperience)]).nice();
+    // const xScaleNew = d3.scaleLinear().range([0, innerWidth-200])
+    //     .domain([0, d3.max(data, d => d.YearsOfExperience)]).nice();
     //const yScaleNew = d3.scaleLinear().range([(innerHeight-margin.gap)/2, 0])
         //.domain([0, d3.max(data, d => d.Salary)]).nice();
     const colormap = d3.schemePaired;
@@ -60,25 +60,14 @@ export function ScatterPlot(props) {
             </g>
         })}
 
-        {xScaleNew.ticks().map( (tick, idx) => {
-            return <g key={idx+'xtick'} transform={`translate(${xScaleNew(tick)}, ${innerHeight/2})`}>
-                {/* <line y1={-10} y2={-margin.gap/2} stroke={"black"}/> */}
-                <line y1={innerHeight/2} y2={margin.gap/2+innerHeight/2-10} stroke={"black"}/>
-                {/* <line y1={-margin.gap/2} y2={-innerHeight/2} stroke={"gray"} opacity={0.3}/> */}
-                <line y1={margin.gap/2} y2={innerHeight/2} stroke={"gray"} opacity={0.3}/>
-                <text style={{textAnchor:"middle"}} >
-                    {tick}
-                </text>
-            </g>
-        })}
-        <text x={innerWidth+5} y={innerHeight/2+10}>{"Age"}</text>
+        <text x={innerWidth} y={innerHeight/2+10}>{"Age"}</text>
         <text x={0} y={-5}>{"Salary"}</text>
-        <text x={0} y={innerHeight+5}>{"Age"}</text>
+        {/* <text x={0} y={innerHeight+5}>{"Age"}</text> */}
         <text style={{fontSize:'2em'}}x={innerWidth-150} y={50}>{"Age-Salary Scatterplot"}</text>
 
-        <text style={{fontSize:'2em'}}x={innerWidth-150} y={innerHeight-50}>{"Deceased"}</text>
+        {/* <text style={{fontSize:'2em'}}x={innerWidth-150} y={innerHeight-50}>{"Deceased"}</text> */}
         {/* <line y1={innerHeight/2+margin.gap/2} x2={innerWidth} y2={innerHeight/2+margin.gap/2} stroke={"black"} strokeWidth={2}/> */}
-        <line y1={innerHeight} x2={innerWidth} y2={innerHeight} stroke={"black"} strokeWidth={2}/>
+        {/* <line y1={innerHeight} x2={innerWidth} y2={innerHeight} stroke={"black"} strokeWidth={2}/> */}
         <line y2={innerHeight/2-margin.gap/2} stroke={"black"} strokeWidth={2} />
 
         {yScale.ticks().map( (tick, idx) => {
@@ -90,8 +79,8 @@ export function ScatterPlot(props) {
                     <line x2={innerWidth-200} stroke={"gray"} opacity={0.3}/> {/* x-scale gray grid!!!! */}
                 </g>
         })}
-        <line y1={innerHeight/2+margin.gap/2} y2={innerHeight} stroke={"black"} strokeWidth={2} />
-        {yScale.ticks().map( (tick, idx) => {
+        {/* <line y1={innerHeight/2+margin.gap/2} y2={innerHeight} stroke={"black"} strokeWidth={2} /> */}
+        {/* {yScale.ticks().map( (tick, idx) => {
             return <g key={idx+'ytick-p'} transform={`translate(${0}, ${innerHeight/2+yScale(tick)+20})`}>
                     <text style={{textAnchor:"end"}} x={-5} >
                         {tick}
@@ -100,16 +89,16 @@ export function ScatterPlot(props) {
                     <line x2={innerWidth} stroke={"gray"} opacity={0.3}/>
                     
                 </g>
-        })}
+        })} */}
         {survived.map( (d, idx) => {
             return <circle key={idx+"point"} cx={xScale(d.Age)} cy={yScale(d.Salary)} r={radius} stroke={"black"} fill={setColor(d)}
             onMouseEnter={() => onMouseEnter(d)} onMouseOut={() => setSelectedCell(null)}/>
         })}
     
-        {perished.map( (d, idx) => {
+        {/* {perished.map( (d, idx) => {
             return <circle key={idx+"point"} cx={xScaleNew(d.YearsOfExperience)} cy={innerHeight/2+yScale(d.Salary)+20} r={radius} stroke={"black"} fill={setColor(d)}
             onMouseEnter={() => onMouseEnter(d)} onMouseOut={() => setSelectedCell(null)}/>
-        })}
+        })} */}
     
         </g>
     </svg>

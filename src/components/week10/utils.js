@@ -16,7 +16,7 @@ function useData(csvPath){
                 */
                 d.Age = +d.Age;
                 d.Salary = +d.Salary;
-                d.Senior = +d.Senior;
+                d.Senior = "Senior: " + d.Senior;
                 d.EducationLevel = "Education: " + d.EducationLevel;
             });
             setData(data);

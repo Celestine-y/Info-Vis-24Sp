@@ -6,7 +6,7 @@ function TreeMapText(props) {
     return <foreignObject width={d.x1-d.x0} height={d.y1-d.y0}>
         <div >
             <p>{d.ancestors().reverse().slice(1).map((d, idx) => d.data.name)
-                .join(".\n")+"\nSalary:"+d3.format(".4s")(d.data.value)}</p>
+                .join(".\n")+"\nSalary: "+d3.format(".4s")(d.data.value)}</p>
         </div>
         </foreignObject>
 }
@@ -24,7 +24,7 @@ export function TreeMap(props) {
     console.log(leaves[0].ancestors());
     const parents = root.leaves().map( d => d.parent.data.name);
     const parentsCategories = parents.filter( (d, idx) => parents.indexOf(d) === idx );
-    const color = d3.scaleOrdinal(d3.schemeDark2).domain(parentsCategories);
+    const color = d3.scaleOrdinal(d3.schemeSet3).domain(parentsCategories);
     const firstLayer = root.descendants()[0].children;
 
     const compareAncestors = (ancestors) => {

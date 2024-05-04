@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { BarChartEducation } from "@/components/week10/barChartEducation";
 import { BarChartRace } from "@/components/week10/barChartRace";
+import { BarChartCountry } from "@/components/week10/barChartCountry";
 import { ScatterPlot } from "@/components/week10/scatter_plot";
 import { TreeMap } from "@/components/week10/tree_map";
 import { Dropdown } from "@/components/week10/dropdown";
@@ -38,7 +39,7 @@ const Titanic = () => {
     //console.log(data.length, data.filter(d => d.Sex==="female").length, data.filter(d => d.Sex==="male").length )
     const innerWidth = WIDTH - margin.left - margin.right;
     const innerHeight = HEIGHT - margin.top - margin.bottom;
-    console.log(getTree(data, ["Gender", "AgeGroup", "Country","EducationLevel","Race"]));
+    console.log(getTree(data, ["Gender", "AgeGroup", "Country","EducationLevel","Race","Senior"]));
     const attributes = [ firstAttr, secondAttr, thirdAttr].filter( d => d !== "null"); 
     // if length/attribute = 0, set a default value
     // console.log(attributes);
@@ -53,6 +54,10 @@ const Titanic = () => {
     .range([0, innerWidthBar])
     .padding(0.1);
 
+    const xScaleBarCountry = d3.scaleBand()
+    .domain(data.map(d => d.Country))
+    .range([0, innerWidthBar])
+    .padding(0.1);
 
     const yScaleBar = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.Salary)])
@@ -79,7 +84,7 @@ const Titanic = () => {
     const tree_ = getTree(data, attributes);
     const tree = {"name":"root", "children": tree_};
     const options = [{value: "null", label: "None"},{value: "Gender", label: "Gender"}, {value: "Country", label: "Country"},
-        {value: "AgeGroup", label: "Age"},{value: "EducationLevel", label: "Education Level"},{value: "Race", label: "Race"}];
+        {value: "AgeGroup", label: "Age"},{value: "EducationLevel", label: "Education Level"},{value: "Race", label: "Race"},{value: "Senior", label: "Senior"}];
     return (<Container>
         <Row>
             <h1>Salary Visualization</h1>
@@ -136,12 +141,16 @@ const Titanic = () => {
                 <BarChartEducation offsetX={margin.left+10} offsetY={margin.top} data={data} xScale={xScaleBarEducation} 
                 yScale={yScaleBar} height={HEIGHT - margin.top - margin.bottom-120} width={WIDTH - margin.left - margin.right}/>
             </svg>
-
+            {/* x: Race and y: Salary */}
             <svg width={WIDTH} height={HEIGHT}>
                 <BarChartRace offsetX={margin.left+10} offsetY={margin.top} data={data} xScale={xScaleBarRace} 
                 yScale={yScaleBar} height={HEIGHT - margin.top - margin.bottom-120} width={WIDTH - margin.left - margin.right}/>
             </svg>
-
+            {/* x: Country and y: Salary */}
+            <svg width={WIDTH} height={HEIGHT}>
+                <BarChartCountry offsetX={margin.left+10} offsetY={margin.top} data={data} xScale={xScaleBarCountry} 
+                yScale={yScaleBar} height={HEIGHT - margin.top - margin.bottom-120} width={WIDTH - margin.left - margin.right}/>
+            </svg>
         </Row>
     </Container>)
 }
