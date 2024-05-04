@@ -87,7 +87,7 @@ const SalaryVis = () => {
         {value: "AgeGroup", label: "Age"},{value: "EducationLevel", label: "Education"},{value: "Race", label: "Race"},{value: "Senior", label: "Senior"}];
     return (<Container>
         <Row>
-            <h1>Salary Visualization</h1>
+            <h1>Salary Determinant Visualization</h1>
             <p>This project serves a crucial purpose by shedding light on the intricate interplay between wages and various demographic factors like age, race, country, gender, and education level. By elucidating these causal relationships, visitors to the website gain valuable insights into income distribution and the myriad factors influencing it. Whether someone seeks a broad overview of income dynamics or desires specific information tailored to their demographic profile, this platform equips them with the necessary knowledge to navigate career choices and self-improvement strategies effectively.</p> 
         </Row>
         <Row>
@@ -100,7 +100,7 @@ const SalaryVis = () => {
         </Row>
 
         <Row>
-            <h2> Barcharts: the relation between Education Level/Race and Salary</h2>
+            <h2> Barcharts: the relation between Education/Race and Salary</h2>
             <p>One significant aspect explored is the impact of education level on income, as depicted in the accompanying bar chart. The data underscores a clear positive correlation between educational attainment and income levels. Notably, the chart delineates education levels ranging from high school (level 0) to Ph.D. (level 3), revealing a progressive increase in income corresponding to higher educational achievements. This insight serves as a vital reference point for students, particularly college graduates, as they contemplate their career trajectories and avenues for personal growth.</p>
             {/* x: Education Level and y: Salary */}
             <svg width={WIDTH} height={HEIGHT}>
@@ -134,7 +134,7 @@ const SalaryVis = () => {
         </Row>
         
         <Row>
-            <h2 class="p-dashed">A treemap with recursive subdivision</h2>
+            <h2>A treemap with recursive subdivision</h2>
             {/* <ul>
                 <li>The size of the rectangle encodes the survival rate of the passenger group it represents.</li>
                 <li>The audience can use the three dropdown buttons to split the passengers into different clusters. The treemap will adjust accordingly, showing the survival rates.</li>
