@@ -5,7 +5,7 @@ function TreeMapText(props) {
     const { d } = props;
     return <foreignObject width={d.x1-d.x0} height={d.y1-d.y0}>
         <div >
-            <p>{d.ancestors().reverse().slice(1).map((d, idx) => d.data.name)
+            <p style = {{fontFamily: "Georgia, serif", color: '#696969'}}>{d.ancestors().reverse().slice(1).map((d, idx) => d.data.name)
                 .join(".\n")+"\nSalary: "+d3.format(".4s")(d.data.value)}</p>
         </div>
         </foreignObject>
