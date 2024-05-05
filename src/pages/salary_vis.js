@@ -96,27 +96,28 @@ const SalaryVis = () => {
         {value: "AgeGroup", label: "Age"},{value: "EducationLevel", label: "Education"},{value: "Race", label: "Race"},{value: "Senior", label: "Senior"}];
     return (<Container>
         <Row>
-            <h1>Salary Determinant Visualization</h1>
-            <p>This project serves a crucial purpose by shedding light on the intricate interplay between wages and various demographic factors like age, race, country, gender, and education level. By elucidating these causal relationships, visitors to the website gain valuable insights into income distribution and the myriad factors influencing it. Whether someone seeks a broad overview of income dynamics or desires specific information tailored to their demographic profile, this platform equips them with the necessary knowledge to navigate career choices and self-improvement strategies effectively.</p> 
+            <p></p>
+            <h1 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", backgroundColor: '#FAF0E6', fontWeight: 'bold'}}>Salary Determinant Visualization</h1>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px', color:"#000080"}}>This project serves a crucial purpose by shedding light on the intricate interplay between <strong>salary</strong> and <strong>various demographic factors</strong> like age, race, country, gender, and education level. By elucidating these causal relationships, visitors to the website gain valuable insights into income distribution and the myriad factors influencing it. Whether someone seeks a broad overview of income dynamics or desires specific information tailored to their demographic profile, this platform equips them with the necessary knowledge to navigate career choices and self-improvement strategies effectively.</p> 
         </Row>
         <Row>
             {/* <Image src="https://cdn.vox-cdn.com/thumbor/sLyxTzq0fNMOhg_LjLVIgPPxljs=/0x0:1200x800/1820x1213/filters:focal(526x241:718x433):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/71960942/Titanic25th_NonFeat_ParamountPictures_Ringer.0.jpg" alt="titanic" fluid /> */}
-            <Image src="/life-choices.jpeg" alt="cartoon picture with a girl standing in front of many doors" fluid />
+            <Image src="/life-choices.jpeg" alt="cartoon picture with a girl standing in front of many doors" fluid style={{borderRadius: '20px'}}/>
         </Row>
         <Row className="mt-3">
-            <h2>A visualization on the salary dataset</h2>
-            <p>We created two bar charts, a scatter plot and a treemap in the visualization, and the audience can find insights into factors that influenced salary using the interactions in the visualization.</p>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}>A visualization on the salary dataset</h2>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px', color:"#778899"}}>We created two bar charts, a scatter plot and a treemap in the visualization, and the audience can find insights into factors that influenced salary using the interactions in the visualization.</p>
         </Row>
 
         <Row>
-            <h2> Barcharts: the relation between Education/Race and Salary</h2>
-            <p>One significant aspect explored is the impact of education level on income, as depicted in the accompanying bar chart. The data underscores a clear positive correlation between educational attainment and income levels. Notably, the chart delineates education levels ranging from high school (level 0) to Ph.D. (level 3), revealing a progressive increase in income corresponding to higher educational achievements. This insight serves as a vital reference point for students, particularly college graduates, as they contemplate their career trajectories and avenues for personal growth.</p>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}> Barcharts: the relation between Education/Race and Salary</h2>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>One significant aspect explored is the impact of education level on income, as depicted in the accompanying bar chart. The data underscores a clear positive correlation between educational attainment and income levels. Notably, the chart delineates education levels ranging from high school (level 0) to Ph.D. (level 3), revealing a progressive increase in income corresponding to higher educational achievements. This insight serves as a vital reference point for students, particularly college graduates, as they contemplate their career trajectories and avenues for personal growth.</p>
             {/* x: Education Level and y: Salary */}
             <svg width={WIDTH} height={HEIGHT}>
                 <BarChartEducation offsetX={margin.left+10} offsetY={margin.top} data={data} xScale={xScaleBarEducation} 
                 yScale={yScaleBar} height={HEIGHT - margin.top - margin.bottom-120} width={WIDTH - margin.left - margin.right}/>
             </svg>
-            <p>Similarly, the distribution of income across different racial groups is elucidated through another bar chart. This visual representation illuminates how, when controlling for job types, disparities in average incomes persist among various racial demographics. While the chart highlights that certain racial groups, such as white individuals, tend to command higher salaries on average, it also underscores persistent inequalities. For instance, Hispanic individuals often face lower average incomes within comparable job categories. Furthermore, the chart distinguishes between different Asian subgroups, excluding Chinese and Korean populations, providing nuanced insights into income dynamics within these communities. Overall, these visualizations deepen our understanding of income inequality and serve as essential tools for fostering informed discussions and policy interventions aimed at promoting economic equity.</p>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>Similarly, the distribution of income across different racial groups is elucidated through another bar chart. This visual representation illuminates how, when controlling for job types, disparities in average incomes persist among various racial demographics. While the chart highlights that certain racial groups, such as white individuals, tend to command higher salaries on average, it also underscores persistent inequalities. For instance, Hispanic individuals often face lower average incomes within comparable job categories. Furthermore, the chart distinguishes between different Asian subgroups, excluding Chinese and Korean populations, providing nuanced insights into income dynamics within these communities. Overall, these visualizations deepen our understanding of income inequality and serve as essential tools for fostering informed discussions and policy interventions aimed at promoting economic equity.</p>
             {/* x: Race and y: Salary */}
             <svg width={WIDTH} height={HEIGHT}>
                 <BarChartRace offsetX={margin.left+10} offsetY={margin.top} data={data} xScale={xScaleBarRace} 
@@ -130,9 +131,9 @@ const SalaryVis = () => {
         </Row>
 
         <Row>
-            <h2>A scatter plot</h2>
-            <p>The scatterplot presented offers a compelling visualization of the relationship between income and age. A clear trend emerges, indicating a positive correlation between these two variables. As age increases, so does income, reflecting the typical trajectory of career advancement and earning potential over the course of one&aposs working life. </p>
-            <p>By hovering your mouse over a certain point, you can see which categories it belongs to in the treemap below as the corresponding rectangle in the treemap will become red, and all the data points referring to the people within the same categories will be highlighted in the scatter plot. You can also hover over the treemap and the relevant part will be highlighted in the scatter plot.</p>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}>A scatter plot</h2>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>The scatterplot presented offers a compelling visualization of the relationship between income and age. A clear trend emerges, indicating a positive correlation between these two variables. As age increases, so does income, reflecting the typical trajectory of career advancement and earning potential over the course of one&aposs working life. </p>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>By hovering your mouse over a certain point, you can see which categories it belongs to in the treemap below as the corresponding rectangle in the treemap will become red, and all the data points referring to the people within the same categories will be highlighted in the scatter plot. You can also hover over the treemap and the relevant part will be highlighted in the scatter plot.</p>
             {/* <ul>
                 <li>The more one paid, the higher probabiliy one might survive.</li>
                 <li>Young passengers (Age&le;10) who paid less were more likely to survive.</li>
@@ -143,7 +144,7 @@ const SalaryVis = () => {
         </Row>
         
         <Row>
-            <h2>A treemap with recursive subdivision</h2>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}>A treemap with recursive subdivision</h2>
             {/* <ul>
                 <li>The size of the rectangle encodes the survival rate of the passenger group it represents.</li>
                 <li>The audience can use the three dropdown buttons to split the passengers into different clusters. The treemap will adjust accordingly, showing the survival rates.</li>

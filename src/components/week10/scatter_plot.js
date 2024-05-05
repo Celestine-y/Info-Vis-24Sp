@@ -85,9 +85,9 @@ export function ScatterPlot(props) {
         })}
 
         <text x={innerWidth/1.25} y={innerHeight/2+10}>{"Age"}</text>
-        <text x={0} y={-5}>{"Salary"}</text>
+        <text x={0} y={-5}>{"Salary"} </text>
         {/* <text x={0} y={innerHeight+5}>{"Age"}</text> */}
-        <text style={{fontSize:'2em'}}x={innerWidth-150} y={50}>{"Age-Salary Scatterplot"}</text>
+        <text style={{fontSize:'2em'}}x={innerWidth-150} y={50}></text>
 
         {/* <text style={{fontSize:'2em'}}x={innerWidth-150} y={innerHeight-50}>{"Deceased"}</text> */}
         {/* <line y1={innerHeight/2+margin.gap/2} x2={innerWidth} y2={innerHeight/2+margin.gap/2} stroke={"black"} strokeWidth={2}/> */}
