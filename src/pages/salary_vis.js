@@ -97,20 +97,22 @@ const SalaryVis = () => {
     return (<Container>
         <Row>
             <p></p>
-            <h1 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", backgroundColor: '#FAF0E6', fontWeight: 'bold'}}>Salary Determinant Visualization</h1>
-            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px', color:"#000080"}}>This project serves a crucial purpose by shedding light on the intricate interplay between <strong>salary</strong> and <strong>various demographic factors</strong> like age, race, country, gender, and education level. By elucidating these causal relationships, visitors to the website gain valuable insights into income distribution and the myriad factors influencing it. Whether someone seeks a broad overview of income dynamics or desires specific information tailored to their demographic profile, this platform equips them with the necessary knowledge to navigate career choices and self-improvement strategies effectively.</p> 
+            <p></p>
+            <h1 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold', textAlign: 'center', color:"#000080"}}>Salary Determinant Visualization</h1>
+            <p></p>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>This project serves a crucial purpose by shedding light on the intricate interplay between <strong>salary</strong> and <strong>various demographic factors</strong> like age, race, country, gender, and education level. By elucidating these causal relationships, visitors to the website gain valuable insights into income distribution and the myriad factors influencing it. Whether someone seeks a broad overview of income dynamics or desires specific information tailored to their demographic profile, this platform equips them with the necessary knowledge to navigate career choices and self-improvement strategies effectively.</p> 
         </Row>
         <Row>
             {/* <Image src="https://cdn.vox-cdn.com/thumbor/sLyxTzq0fNMOhg_LjLVIgPPxljs=/0x0:1200x800/1820x1213/filters:focal(526x241:718x433):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/71960942/Titanic25th_NonFeat_ParamountPictures_Ringer.0.jpg" alt="titanic" fluid /> */}
             <Image src="/life-choices.jpeg" alt="cartoon picture with a girl standing in front of many doors" fluid style={{borderRadius: '20px'}}/>
         </Row>
         <Row className="mt-3">
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}>A visualization on the salary dataset</h2>
-            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px', color:"#778899"}}>We created two bar charts, a scatter plot and a treemap in the visualization, and the audience can find insights into factors that influenced salary using the interactions in the visualization.</p>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold', color:"#000080"}}>A visualization on the salary dataset</h2>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>We created two bar charts, a scatter plot and a treemap in the visualization, and the audience can find insights into factors that influenced salary using the interactions in the visualization.</p>
         </Row>
 
         <Row>
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}> Barcharts: the relation between Education/Race and Salary</h2>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold', color:"#000080"}}> Barcharts: the relation between Education/Race and Salary</h2>
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>One significant aspect explored is the impact of education level on income, as depicted in the accompanying bar chart. The data underscores a clear positive correlation between educational attainment and income levels. Notably, the chart delineates education levels ranging from high school (level 0) to Ph.D. (level 3), revealing a progressive increase in income corresponding to higher educational achievements. This insight serves as a vital reference point for students, particularly college graduates, as they contemplate their career trajectories and avenues for personal growth.</p>
             {/* x: Education Level and y: Salary */}
             <svg width={WIDTH} height={HEIGHT}>
@@ -131,7 +133,7 @@ const SalaryVis = () => {
         </Row>
 
         <Row>
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}>A scatter plot</h2>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold', color:"#000080"}}>A scatter plot: the relation between Age and Salary & A treemap with recursive subdivision</h2>
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>The scatterplot presented offers a compelling visualization of the relationship between income and age. A clear trend emerges, indicating a positive correlation between these two variables. As age increases, so does income, reflecting the typical trajectory of career advancement and earning potential over the course of one&apos;s working life. </p>
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>By hovering your mouse over a certain point, you can see which categories it belongs to in the treemap below as the corresponding rectangle in the treemap will become red, and all the data points referring to the people within the same categories will be highlighted in the scatter plot. You can also hover over the treemap and the relevant part will be highlighted in the scatter plot.</p>
              <ScatterPlot x={margin.left} y={margin.top} width={WIDTH} height={HEIGHT/2} data={data}
@@ -139,7 +141,7 @@ const SalaryVis = () => {
         </Row>
         
         <Row>
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}>A treemap with recursive subdivision</h2>
+            {/* <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}>A treemap with recursive subdivision</h2> */}
             {/* <ul>
                 <li>The size of the rectangle encodes the survival rate of the passenger group it represents.</li>
                 <li>The audience can use the three dropdown buttons to split the passengers into different clusters. The treemap will adjust accordingly, showing the survival rates.</li>
