@@ -44,10 +44,19 @@ const SalaryVis = () => {
     // if length/attribute = 0, set a default value
     // console.log(attributes);
 
+    var x = [
+        { EducationLevel: 'Education: 0'},
+        { EducationLevel: 'Education: 1'},
+        { EducationLevel: 'Education: 2'},
+        { EducationLevel: 'Education: 3'}
+      ];
+
     const xScaleBarEducation = d3.scaleBand()
-        .domain(data.map(d => d.EducationLevel))
+        .domain(x.map(d => d.EducationLevel))
+        //.domain(data.map(d => [“Education: 0”, “Education 1”, “Education 2”,“Education 3”]))
         .range([0, innerWidthBar])
         .padding(0.1);
+    // console.log(xScaleBarEducation);
 
     const xScaleBarRace = d3.scaleBand()
     .domain(data.map(d => d.Race))
