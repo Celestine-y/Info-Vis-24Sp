@@ -105,12 +105,12 @@ const SalaryVis = () => {
             <Image src="/life-choices.jpeg" alt="cartoon picture with a girl standing in front of many doors" fluid style={{borderRadius: '20px'}}/>
         </Row>
         <Row className="mt-3">
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}>A visualization on the salary dataset</h2>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}>A visualization on the salary dataset</h2>
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px', color:"#778899"}}>We created two bar charts, a scatter plot and a treemap in the visualization, and the audience can find insights into factors that influenced salary using the interactions in the visualization.</p>
         </Row>
 
         <Row>
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}> Barcharts: the relation between Education/Race and Salary</h2>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}> Barcharts: the relation between Education/Race and Salary</h2>
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>One significant aspect explored is the impact of education level on income, as depicted in the accompanying bar chart. The data underscores a clear positive correlation between educational attainment and income levels. Notably, the chart delineates education levels ranging from high school (level 0) to Ph.D. (level 3), revealing a progressive increase in income corresponding to higher educational achievements. This insight serves as a vital reference point for students, particularly college graduates, as they contemplate their career trajectories and avenues for personal growth.</p>
             {/* x: Education Level and y: Salary */}
             <svg width={WIDTH} height={HEIGHT}>
@@ -131,20 +131,15 @@ const SalaryVis = () => {
         </Row>
 
         <Row>
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}>A scatter plot</h2>
-            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>The scatterplot presented offers a compelling visualization of the relationship between income and age. A clear trend emerges, indicating a positive correlation between these two variables. As age increases, so does income, reflecting the typical trajectory of career advancement and earning potential over the course of one&aposs working life. </p>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}>A scatter plot</h2>
+            <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>The scatterplot presented offers a compelling visualization of the relationship between income and age. A clear trend emerges, indicating a positive correlation between these two variables. As age increases, so does income, reflecting the typical trajectory of career advancement and earning potential over the course of one&apos;s working life. </p>
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>By hovering your mouse over a certain point, you can see which categories it belongs to in the treemap below as the corresponding rectangle in the treemap will become red, and all the data points referring to the people within the same categories will be highlighted in the scatter plot. You can also hover over the treemap and the relevant part will be highlighted in the scatter plot.</p>
-            {/* <ul>
-                <li>The more one paid, the higher probabiliy one might survive.</li>
-                <li>Young passengers (Age&le;10) who paid less were more likely to survive.</li>
-                <li>Adults (18&le;Age&le;50) who paid less were more likely to deceased.</li>
-            </ul> */}
              <ScatterPlot x={margin.left} y={margin.top} width={WIDTH} height={HEIGHT/2} data={data}
                         selectedCell={selectedCell} setSelectedCell={setSelectedCell} attributes={attributes}/>
         </Row>
         
         <Row>
-            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif"}}>A treemap with recursive subdivision</h2>
+            <h2 style = {{fontFamily: "cursive, 'Comic Sans MS', sans-serif", fontWeight: 'bold'}}>A treemap with recursive subdivision</h2>
             {/* <ul>
                 <li>The size of the rectangle encodes the survival rate of the passenger group it represents.</li>
                 <li>The audience can use the three dropdown buttons to split the passengers into different clusters. The treemap will adjust accordingly, showing the survival rates.</li>
