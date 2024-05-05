@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { BarChartEducation } from "@/components/week10/barChartEducation";
 import { BarChartRace } from "@/components/week10/barChartRace";
-import { BarChartCountry } from "@/components/week10/barChartCountry";
 import { ScatterPlot } from "@/components/week10/scatter_plot";
 import { TreeMap } from "@/components/week10/tree_map";
 import { Dropdown } from "@/components/week10/dropdown";
