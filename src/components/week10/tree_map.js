@@ -12,7 +12,7 @@ function TreeMapText(props) {
 }
 
 export function TreeMap(props) {
-    const { width, height, tree, selectedCell, setSelectedCell } = props;
+    const { width, height, tree, selectedCell, setSelectedCell, setTooltipX, setTooltipY } = props;
     const margin = { top: 20, right: 40, bottom: 20, left: 40, gap: 40 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -45,7 +45,12 @@ export function TreeMap(props) {
             const ancestors = d.ancestors().map(d => {return {"name":d.data.name, "attr":d.data.attr}}).slice(0, -1);
             // console.log(ancestors);
             return <g key={idx+"treemap"} transform={`translate(${d.x0}, ${d.y0})`} 
-                onMouseOver={()=>setSelectedCell(ancestors)} onMouseOut={()=>setSelectedCell(null)}>
+                onMouseOver={(event) => {
+                    setSelectedCell(ancestors);
+                    setTooltipX(null);
+                    setTooltipY(null); 
+                }}  
+                onMouseOut={()=>setSelectedCell(null)}>
                 <rect width={d.x1-d.x0} height={d.y1-d.y0} stroke={"none"} fill={selectedCell && compareAncestors(ancestors) ? "red":color(d.parent.data.name)} opacity={0.8}/>
                 <TreeMapText d={d} />
             </g>

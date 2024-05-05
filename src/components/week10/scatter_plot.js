@@ -12,7 +12,7 @@ import * as d3 from 'd3'
 // }
 
 export function ScatterPlot(props) {
-    const { width, height, data, selectedCell, setSelectedCell, attributes } = props;
+    const { width, height, data, selectedCell, setSelectedCell, attributes, setTooltipX, setTooltipY } = props;
     const margin = { top: 20, right: 40, bottom: 20, left: 40, gap: 40 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = (height - margin.top - margin.bottom)*2;
@@ -28,6 +28,7 @@ export function ScatterPlot(props) {
     const radius = 3;
     const survived = data;
     const perished = data;
+    
     const setColor = (d) => {
         if(selectedCell){
             // console.log(selectedCell);
@@ -116,7 +117,12 @@ export function ScatterPlot(props) {
         })} */}
         {survived.map( (d, idx) => {
             return <circle key={idx+"point"} cx={xScale(d.Age)} cy={yScale(d.Salary)} r={radius} stroke={"black"} fill={setColor(d)}
-            onMouseEnter={() => onMouseEnter(d)} onMouseOut={() => setSelectedCell(null)}/>
+            onMouseEnter={(event) => {
+                onMouseEnter(d);
+                setTooltipX(event.pageX);
+                setTooltipY(event.pageY); 
+            }}
+            onMouseOut={() => setSelectedCell(null)}/>
         })}
     
         {/* {perished.map( (d, idx) => {

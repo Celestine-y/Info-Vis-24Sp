@@ -9,11 +9,13 @@ import { ScatterPlot } from "@/components/week10/scatter_plot";
 import { TreeMap } from "@/components/week10/tree_map";
 import { Dropdown } from "@/components/week10/dropdown";
 import { useData, getAgeGroup, getTree } from "@/components/week10/utils";
-//import styles from '../styles/assignment6_styles.module.css';
+import Tooltip from "@/components/week10/tooltips";
 
 const csvUrl = "https://gist.githubusercontent.com/Celestine-y/203086cb78ebbb38a506e22fc4343ae0/raw/9ada20a7959d5cdad5dcd6977158c22578c85fb6/salary.csv"//"https://gist.githubusercontent.com/Celestine-y/203086cb78ebbb38a506e22fc4343ae0/raw/3a5913f69dc9eb551423331d4b9927e6897b64c8/salary.csv" // "https://gist.githubusercontent.com/hogwild/2ac0f0b665b4295e0574c85c12bec092/raw/8cee439ac896703d2c95cb805f44bf07d74e933b/titanic.csv";
 
 const SalaryVis = () => {
+    const [tooltipX, setTooltipX] = React.useState(null);
+    const [tooltipY, setTooltipY] = React.useState(null);
     const [firstAttr, setFirstAttr] = React.useState("Gender");
     const [secondAttr, setSecondAttr] = React.useState("Country");
     const [thirdAttr, setThirdAttr] = React.useState(null);
@@ -137,7 +139,8 @@ const SalaryVis = () => {
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>The scatterplot presented offers a compelling visualization of the relationship between income and age. A clear trend emerges, indicating a positive correlation between these two variables. As age increases, so does income, reflecting the typical trajectory of career advancement and earning potential over the course of one&apos;s working life. </p>
             <p style = {{fontFamily: "Georgia, serif", fontSize: '22px'}}>By hovering your mouse over a certain point, you can see which categories it belongs to in the treemap below as the corresponding rectangle in the treemap will become red, and all the data points referring to the people within the same categories will be highlighted in the scatter plot. You can also hover over the treemap and the relevant part will be highlighted in the scatter plot.</p>
              <ScatterPlot x={margin.left} y={margin.top} width={WIDTH} height={HEIGHT/2} data={data}
-                        selectedCell={selectedCell} setSelectedCell={setSelectedCell} attributes={attributes}/>
+                        selectedCell={selectedCell} setSelectedCell={setSelectedCell} attributes={attributes}
+                        setTooltipX={setTooltipX} setTooltipY={setTooltipY}/>
         </Row>
         
         <Row>
@@ -161,8 +164,10 @@ const SalaryVis = () => {
             </Row> 
         </Row>
         <Row className="justify-content-md-left mb-5">
-            <TreeMap width={WIDTH} height={HEIGHT} tree={tree} selectedCell={selectedCell} setSelectedCell={setSelectedCell}/>
+            <TreeMap width={WIDTH} height={HEIGHT} tree={tree} selectedCell={selectedCell} setSelectedCell={setSelectedCell} setTooltipX={setTooltipX} setTooltipY={setTooltipY}/>
         </Row>
+
+        <Tooltip d={selectedCell} x={tooltipX} y={tooltipY}/>
 
     </Container>)
 }
